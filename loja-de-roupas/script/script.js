@@ -1,6 +1,6 @@
 //declaração de todos os produtos da lista
 let todosProdutos = [
-    { nome: "Blusa Xadrez", preco: 139.90, imagem: "/img/feminino/feminino1.jpg", categoria: "feminino" },
+    { nome: "Blusa Xadrez", preco: 139.90, imagem: "/", categoria: "feminino" },
     { nome: "Casaco Casual", preco: 218.80, imagem: "/img/feminino/feminino2.jpg", categoria: "feminino" },
     { nome: "Camisa Social", preco: 89.90, imagem: "/img/feminino/feminino3.jpg", categoria: "feminino" },
     { nome: "Camisa Bege", preco: 115.50, imagem: "/img/feminino/feminino4.jpg", categoria: "feminino" },

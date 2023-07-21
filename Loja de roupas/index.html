@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Virtual</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul class="menu-itens">
+                <li id="logo">Style Central</li>
+                <li><a href="/" class="valor-botao" onclick="filtrarProduto('all')">Todos os produtos</a></li>
+                <li><a href="/" class="valor-botao" onclick="filtrarProduto('feminino')">Feminino</a></li>
+                <li><a href="/" class="valor-botao" onclick="filtrarProduto('infantil')">Infantil</a></li>
+                <li><a href="/" class="valor-botao" onclick="filtrarProduto('masculino')">Masculino</a></li>
+                <li><a href="/">Carrinho</a></li>
+            </ul>
+            <div class="pesquisa">
+                <input type="search" id="input-pesquisa" placeholder="Buscar produtos">
+                <button><img src="/img/172546_search_icon.svg"></button>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="lista-produtos" id="lista-produtos"></section>
+
+    <footer>
+        <p>Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="/script/script.js"></script>
+</body>
+</html>

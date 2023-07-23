@@ -18,11 +18,12 @@ let todosProdutos = [
     { nome: "Camisa Polo Cinza", preco: 115.50, imagem: "./img/masculino/masculino4.jpg", categoria: "masculino" },
     { nome: "Camisa Social Branca", preco: 149.90, imagem: "./img/masculino/masculino5.jpg", categoria: "masculino" },
     { nome: "Camisa Social Bege", preco: 139.90, imagem: "./img/masculino/masculino6.jpg", categoria: "masculino" },
-];
+]
 
 const listaProdutos = document.querySelector(".lista-produtos");
 
 //disposição em loop para todos os produtos da lista e adição da estrutura HTML a ser repetida
+
 for (let i = 0; i < todosProdutos.length; i++) {
     const produto = todosProdutos[i];
     const blocoProduto = `
@@ -38,15 +39,41 @@ for (let i = 0; i < todosProdutos.length; i++) {
     listaProdutos.innerHTML += blocoProduto;
 }
 
-// criar função para filtrar as categorias dos produtos
-// function filtrarProduto(valor) {
-//     // classe do seletor
-//     let seletor = document.querySelectorAll(".valor-botao")
-//     console.log(seletor)
-// }
+// parametro passado pelo botão (mesmo que as categorias)
+function filtrarProduto(valor) {
+    // classe do botão
+    let botoes = document.querySelectorAll(".valor-botao");
+    botoes.forEach((botao) => {
+        // verificar se o valor é igual ao innerText
+        if (valor.toUpperCase() == botao.innerText.toUpperCase()) {
+            botao.classList.add("ativo");
+        } else {
+            botao.classList.remove("ativo");
+        }
+    });
+
+    // selecionar todas os blocos
+    let elementos = document.querySelectorAll(".bloco-produto");
+    // loop por todos os blocos
+    elementos.forEach((elemento) => {
+        // mostrar todos os blocos ao clicar no botão todos
+        if (valor == "todos") {
+            elemento.classList.remove("esconder");
+        } else {
+            // verificar se elemento tem a classe de categoria
+            if (elemento.classList.contains(valor)) {
+                // mostrar elemento de acordo com a categoria
+                elemento.classList.remove("esconder");
+            } else {
+                // esconder outros elementos
+                elemento.classList.add("esconder")
+            }
+        }
+    })
+};
 
 
-// inicialmente mostrar todos os itens ao carregar a pagina
-// window.onload = () => {
-//     filtrarProduto('all')
-// }
+// iniciar com todos os produtos
+window.onload = () => {
+    filtrarProduto("todos")
+}

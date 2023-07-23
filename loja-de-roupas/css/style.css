@@ -72,13 +72,13 @@ li button:focus {
 }
 
 /* estilização dos itens de pesquisa */
-.pesquisa {
+.pesquisa-container {
     display: flex;
     align-items: end;
     border-bottom: #707070 1px solid;
 }
 
-.pesquisa input {
+.pesquisa-container input {
     box-sizing: border-box;
     background: transparent;
     width: 200px;
@@ -86,23 +86,23 @@ li button:focus {
     border: var(--input-border);
 }
 
-.pesquisa input[type=search] {
+.pesquisa-container input[type=search] {
     font-size: 14px;
 }
 
 /* botão de pesquisa */
-.pesquisa button img {
+.pesquisa-container button img {
     width: 20px;
 }
 
-.pesquisa button {
+.pesquisa-container button {
     background: transparent;
     border: var(--input-border);
     border-radius: 50px;
     padding: 4px;
 }
 
-.pesquisa button:hover {
+.pesquisa-container button:hover {
     background: rgba(0, 0, 0, 10%);
 }
 

@@ -8,7 +8,7 @@ let todosProdutos = [
     { nome: "Blusa Preta Estampada", preco: 139.90, imagem: "./img/feminino/feminino6.jpg", categoria: "feminino" },
     { nome: "Camisa Longa Estampada", preco: 99.90, imagem: "./img/infantil/infantil1.jpg", categoria: "infantil" },
     { nome: "Blusa Branca Estampada", preco: 45.39, imagem: "./img/infantil/infantil2.jpg", categoria: "infantil" },
-    { nome: "Vestido Vermelhor Xadrez", preco: 89.90, imagem: "./img/infantil/infantil3.jpg", categoria: "infantil" },
+    { nome: "Vestido Vermelho Xadrez", preco: 89.90, imagem: "./img/infantil/infantil3.jpg", categoria: "infantil" },
     { nome: "Camisa Laranja Estampada", preco: 45.39, imagem: "./img/infantil/infantil4.jpg", categoria: "infantil" },
     { nome: "Casaco Vermelho Estampado", preco: 99.90, imagem: "./img/infantil/infantil5.jpg", categoria: "infantil" },
     { nome: "Vestido Estampado", preco: 95.90, imagem: "./img/infantil/infantil6.jpg", categoria: "infantil" },
@@ -30,7 +30,7 @@ for (let i = 0; i < todosProdutos.length; i++) {
         <div class="bloco-produto esconder ${produto.categoria}">
             <img src="${produto.imagem}" alt="${produto.nome}">
             <div class="texto-item">
-                <h1 class="titulo">${produto.nome}</h1>
+                <h1 class="nome-produto">${produto.nome}</h1>
                 <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
                 <button>Adicionar</button>
             </div>
@@ -68,10 +68,28 @@ function filtrarProduto(valor) {
                 // esconder outros elementos
                 elemento.classList.add("esconder")
             }
-        }
-    })
+        };
+    });
 };
 
+// botão de pesquisar
+document.getElementById("pesquisar").addEventListener("click", () => {
+    let inputPesquisa = document.getElementById("input-pesquisa").value;
+    let elementosPesquisa = document.querySelectorAll(".nome-produto");
+    let blocoPesquisa = document.querySelectorAll(".bloco-produto");
+
+    console.log(inputPesquisa)
+
+    // loop por todos os elementos
+    elementosPesquisa.forEach((item, index) => {
+        // checar se o texto da pesquisa corresponde a algum item
+        if (item.innerText.toUpperCase().includes(inputPesquisa.toUpperCase())) {
+            blocoPesquisa[index].classList.remove("esconder");
+        } else {
+            blocoPesquisa[index].classList.add("esconder");
+        }
+    });
+});
 
 // iniciar com todos os produtos
 window.onload = () => {

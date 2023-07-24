@@ -31,7 +31,7 @@ for (let i = 0; i < todosProdutos.length; i++) {
             <img src="${produto.imagem}" alt="${produto.nome}">
             <div class="texto-item">
                 <h1 class="nome-produto">${produto.nome}</h1>
-                <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
+                <p class="preco">R$ ${produto.preco.toFixed(2).replace(".", ",")}</p>
                 <button>Adicionar</button>
             </div>
         </div>
@@ -72,15 +72,22 @@ function filtrarProduto(valor) {
     });
 };
 
-// botão de pesquisar
-document.getElementById("pesquisar").addEventListener("click", () => {
+//pesquisar com enter na barra de input
+document.getElementById("input-pesquisa").addEventListener("keydown", function (evento) {
+    if (evento.key === "Enter") {
+        pesquisar();
+    };
+});
+
+//pesquisar ao apertar o botão
+document.getElementById("pesquisar").addEventListener("click", pesquisar);
+
+function pesquisar() {
     let inputPesquisa = document.getElementById("input-pesquisa").value;
     let elementosPesquisa = document.querySelectorAll(".nome-produto");
     let blocoPesquisa = document.querySelectorAll(".bloco-produto");
 
-    console.log(inputPesquisa)
-
-    // loop por todos os elementos
+    //loop por todos os elementos
     elementosPesquisa.forEach((item, index) => {
         // checar se o texto da pesquisa corresponde a algum item
         if (item.innerText.toUpperCase().includes(inputPesquisa.toUpperCase())) {
@@ -89,7 +96,7 @@ document.getElementById("pesquisar").addEventListener("click", () => {
             blocoPesquisa[index].classList.add("esconder");
         }
     });
-});
+};
 
 // iniciar com todos os produtos
 window.onload = () => {

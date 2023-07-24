@@ -1,0 +1,127 @@
+/* Zerando os estilos */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --main-color: #E74646;
+    --text-color: #172e41;
+    --bg-color: #fdfffe;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+body {
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    /* background: #f6f6f6; */
+    box-shadow: 0 1px 4px hsl(0, 4%, 15%);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+ul {
+    display: flex;
+    gap: 20px;
+    align-items: end;
+}
+
+#logo {
+    font-size: 1.3rem;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.valor-botao {
+    cursor: pointer;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-size: .9rem;
+    background: transparent;
+    border: none;
+}
+
+.valor-botao:hover,
+.valor-botao:focus {
+    border-bottom:var(--main-color) 3px solid;
+    transition: .2s;
+}
+
+/* itens de pesquisa */
+.pesquisa-container {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    border-radius: 50px;
+    background: #E74646;
+    padding: 10px 20px;
+    gap: 10px;
+}
+
+.pesquisa-container input {
+    box-sizing: border-box;
+    background: transparent;
+    border: var(--input-border);
+    width: 150px;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.pesquisa-container input[type=search] {
+    font-size: 1rem;
+    color: var(--bg-color);
+}
+
+.pesquisa-container input::placeholder {
+    color: var(--bg-color);
+}
+
+.pesquisa-container button {
+    width: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* disposição dos produtos */
+.lista-produtos {
+    padding: 4rem 3rem;
+    margin-top: 84px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    gap: 1.5rem;
+}
+
+/* esconder elementos com a classe .esconder */
+.esconder {
+    display: none;
+}

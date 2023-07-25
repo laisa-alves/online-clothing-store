@@ -32,7 +32,7 @@ body {
     width: 100%;
 }
 
-/* header */
+/* configurando o header */
 header {
     position: fixed;
     top: 0;
@@ -68,11 +68,12 @@ ul {
     font-size: .9rem;
     background: transparent;
     border: none;
+    border-bottom: transparent 3px solid;
 }
 
 .valor-botao:hover,
 .valor-botao:focus {
-    border-bottom:var(--main-color) 3px solid;
+    border-bottom: var(--main-color) 3px solid;
     transition: .2s;
 }
 
@@ -85,6 +86,11 @@ ul {
     background: #E74646;
     padding: 10px 20px;
     gap: 10px;
+}
+
+.pesquisa-container:hover {
+    background: #172e41;
+    transition: .4s;
 }
 
 .pesquisa-container input {
@@ -114,11 +120,65 @@ ul {
 
 /* disposição dos produtos */
 .lista-produtos {
-    padding: 4rem 3rem;
+    padding: 5rem 6rem;
     margin-top: 84px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(325px, auto));
+    gap: 2rem;
+    row-gap: 2.5rem;
+}
+
+.bloco-produto {
+    padding: 10px;
+}
+
+.bloco-produto:hover {
+    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+}
+
+/* Estilização do texto do bloco de produto */
+.nome-produto {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #707070;
+}
+
+.preco-produto {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.adicionar-sacola {
+    background: var(--main-color);
+    border: none;
+    color: var(--bg-color);
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.adicionar-sacola:hover {
+    background: var(--text-color)
+}
+
+/* Footer */
+footer {
+    grid-column: 1/4;
+    justify-items: center;
+    text-align: center;
+    background: var(--text-color);
+    padding: 50px;
+}
+
+footer p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--bg-color);
 }
 
 /* esconder elementos com a classe .esconder */

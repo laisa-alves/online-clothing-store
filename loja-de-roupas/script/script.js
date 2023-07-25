@@ -23,7 +23,6 @@ let todosProdutos = [
 const listaProdutos = document.querySelector(".lista-produtos");
 
 //disposição em loop para todos os produtos da lista e adição da estrutura HTML a ser repetida
-
 for (let i = 0; i < todosProdutos.length; i++) {
     const produto = todosProdutos[i];
     const blocoProduto = `
@@ -101,12 +100,10 @@ window.onload = () => {
     filtrarProduto("todos");
 };
 
-// modal
+// configurando o modal
 let abrirModalSacola = document.querySelector("#abrir-modal");
 let modal = document.querySelector(".modal-container");
 let fecharModal = document.querySelector("#fechar-modal");
-
-// document.getElementById("pesquisar").addEventListener("click", pesquisar);
 
 // abrir modal
 abrirModalSacola.onclick = () => {

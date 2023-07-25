@@ -118,6 +118,11 @@ ul {
     cursor: pointer;
 }
 
+#search-icon {
+    color: var(--bg-color);
+    font-size: 1.3rem;
+}
+
 /* disposição dos produtos */
 .lista-produtos {
     padding: 5rem 6rem;

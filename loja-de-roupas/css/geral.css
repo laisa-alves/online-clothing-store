@@ -39,8 +39,7 @@ header {
     left: 0;
     width: 100%;
     background: var(--bg-color);
-    /* background: #f6f6f6; */
-    box-shadow: 0 1px 4px hsl(0, 4%, 15%);
+    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
 }
 
 nav {

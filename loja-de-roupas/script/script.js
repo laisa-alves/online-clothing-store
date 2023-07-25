@@ -28,12 +28,10 @@ for (let i = 0; i < todosProdutos.length; i++) {
     const produto = todosProdutos[i];
     const blocoProduto = `
         <div class="bloco-produto esconder ${produto.categoria}">
-            <img src="${produto.imagem}" alt="${produto.nome}">
-            <div class="texto-item">
-                <h1 class="nome-produto">${produto.nome}</h1>
-                <p class="preco">R$ ${produto.preco.toFixed(2).replace(".", ",")}</p>
-                <button>Adicionar</button>
-            </div>
+            <img class="img-do-produto" src="${produto.imagem}" alt="${produto.nome}">
+            <h1 class="nome-produto">${produto.nome}</h1>
+            <p class="preco-produto">R$ ${produto.preco.toFixed(2)}</p>
+            <button class="adicionar-sacola id="adicionar-sacola">Adicionar</button>
         </div>
     `;
     listaProdutos.innerHTML += blocoProduto;
@@ -104,19 +102,140 @@ window.onload = () => {
 };
 
 // modal
-let abrirModal = document.querySelector("#abrir-modal");
+let abrirModalSacola = document.querySelector("#abrir-modal");
 let modal = document.querySelector(".modal-container");
 let fecharModal = document.querySelector("#fechar-modal");
 
 // document.getElementById("pesquisar").addEventListener("click", pesquisar);
 
 // abrir modal
-abrirModal.onclick = () => {
+abrirModalSacola.onclick = () => {
     modal.classList.add("selecionado");
+}
+function abrirModal() {
+    modal.classList.add("selecionado")
 }
 
 // fechar modal
 fecharModal.onclick = () => {
-    modal.classList.remove("selecionado")
+    modal.classList.remove("selecionado");
 }
 
+// adicionando funcionalidade no modal
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ready);
+} else {
+    ready();
+}
+
+// criando a função ready
+function ready() {
+    // remover itens da sacola de compras
+    let removeCartButtons = document.getElementsByClassName("delete-icon")
+    console.log(removeCartButtons)
+    for (let i = 0; i < removeCartButtons.length; i++) {
+        let button = removeCartButtons[i];
+        button.addEventListener("click", removeCartItem);
+    }
+    // mudança na quantidade
+    let quantityInputs = document.getElementsByClassName("qnt-itens");
+    for (let i = 0; i < quantityInputs.length; i++) {
+        let input = quantityInputs[i];
+        input.addEventListener("change", quantityChanged);
+    }
+    // adicionar a sacola
+    let addCart = document.getElementsByClassName("adicionar-sacola");
+    for (let i = 0; i < addCart.length; i++) {
+        let button = addCart[i];
+        button.addEventListener("click", addCartClicked);
+        button.addEventListener("click", abrirModal)
+    }
+    // botão de comprar agora
+    document.getElementsByClassName("botao-compra")[0].addEventListener("click", botaoCompraClicado);
+}
+
+// função do botão de compra
+function botaoCompraClicado() {
+    alert("Seu pedido foi realizado");
+    let cartContent = document.getElementsByClassName("modal-conteudo")[0];
+    while (cartContent.hasChildNodes()) {
+        cartContent.removeChild(cartContent.firstChild);
+    }
+    updateTotal();
+}
+
+// função para remover itens do carrinho
+function removeCartItem(event) {
+    let buttonClicked = event.target;
+    buttonClicked.parentElement.remove();
+    updateTotal();
+}
+
+// função para mudança na quantidade
+function quantityChanged(event) {
+    let input = event.target;
+    if (isNaN(input.value) || input.value <= 0) {
+        input.value = 1;
+    }
+    updateTotal()
+}
+
+// adicionar produto a sacola
+function addCartClicked(event) {
+    let button = event.target;
+    let shopProducts = button.parentElement;
+    let title = shopProducts.getElementsByClassName("nome-produto")[0].innerText;
+    let price = shopProducts.getElementsByClassName("preco-produto")[0].innerText;
+    let productImage = shopProducts.getElementsByClassName("img-do-produto")[0].src;
+    addProductToCart(title, price, productImage);
+    updateTotal();
+}
+
+function addProductToCart(title, price, productImg) {
+    let cartShopBox = document.createElement("div");
+    cartShopBox.classList.add("itens-sacola");
+    let cartItems = document.getElementsByClassName("modal-conteudo")[0];
+    let cartItemsNames = cartItems.getElementsByClassName("titulo-produto-bloco");
+
+    for (let i = 0; i < cartItemsNames.length; i++) {
+        if (cartItemsNames[i].innerText === title) {
+            alert("Você já adicionou esse produto na sacola de compras");
+            return
+        }
+    }
+
+    let cartBoxContent = `
+        <img src="${productImg}" class="img-sacola">
+        <div class="detalhes-bloco">
+        <div class="titulo-produto-bloco">${title}</div>
+        <div class="preco-bloco">${price}</div>
+        <input type="number" value="1" class="qnt-itens">
+        </div>
+        <i class="fa-regular fa-trash-can delete-icon"></i>
+    `;
+
+    cartShopBox.innerHTML = cartBoxContent;
+    cartItems.append(cartShopBox);
+    cartShopBox.getElementsByClassName("delete-icon")[0].addEventListener("click", removeCartItem);
+    cartShopBox.getElementsByClassName("qnt-itens")[0].addEventListener("change", quantityChanged);
+}   
+
+// atualizar o valor total
+function updateTotal() {
+    let cartContent = document.getElementsByClassName("modal-conteudo")[0];
+    let cartBoxes = cartContent.getElementsByClassName("itens-sacola");
+    let total = 0;
+
+    for (let i = 0; i < cartBoxes.length; i++) {
+        let cartBox = cartBoxes[i];
+        let priceElement = cartBox.getElementsByClassName("preco-bloco")[0];
+        let quantityElement = cartBox.getElementsByClassName("qnt-itens")[0];
+        let price = parseFloat(priceElement.innerText.replace("R$ ", ""));
+        let quantity = quantityElement.value;
+        total += price * quantity;
+    }
+
+    // se o preço tiver valor decimal
+    total = Math.ceil(total * 100) / 100;
+    document.getElementsByClassName("preco-total")[0].innerText = "R$ " + total.toFixed(2);
+}

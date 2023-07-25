@@ -100,5 +100,23 @@ function pesquisar() {
 
 // iniciar com todos os produtos
 window.onload = () => {
-    filtrarProduto("todos")
+    filtrarProduto("todos");
+};
+
+// modal
+let abrirModal = document.querySelector("#abrir-modal");
+let modal = document.querySelector(".modal-container");
+let fecharModal = document.querySelector("#fechar-modal");
+
+// document.getElementById("pesquisar").addEventListener("click", pesquisar);
+
+// abrir modal
+abrirModal.onclick = () => {
+    modal.classList.add("selecionado");
 }
+
+// fechar modal
+fecharModal.onclick = () => {
+    modal.classList.remove("selecionado")
+}
+

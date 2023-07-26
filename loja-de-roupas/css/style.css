@@ -279,7 +279,7 @@ footer p {
 }
 
 .delete-icon {
-    font-size: 24px;
+    font-size: 18px;
     color: #E74646;
     cursor: pointer;
 }
@@ -346,5 +346,4 @@ footer p {
     .pesquisa-container button {
         width: 20px;
     }
-
 }

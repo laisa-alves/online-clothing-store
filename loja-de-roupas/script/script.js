@@ -204,9 +204,9 @@ function addProductToCart(title, price, productImg) {
     let cartBoxContent = `
         <img src="${productImg}" class="img-sacola">
         <div class="detalhes-bloco">
-        <div class="titulo-produto-bloco">${title}</div>
-        <div class="preco-bloco">${price}</div>
-        <input type="number" value="1" class="qnt-itens">
+            <div class="titulo-produto-bloco">${title}</div>
+            <div class="preco-bloco">${price}</div>
+            <input type="number" value="1" class="qnt-itens">
         </div>
         <i class="fa-regular fa-trash-can delete-icon"></i>
     `;

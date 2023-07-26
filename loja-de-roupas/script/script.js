@@ -20,7 +20,7 @@ let todosProdutos = [
     { nome: "Camisa Social Bege", preco: 139.90, imagem: "./img/masculino/masculino6.jpg", categoria: "masculino" },
 ]
 
-const listaProdutos = document.querySelector(".lista-produtos");
+const listaProdutos = document.querySelector(".conteudo-produtos");
 
 //disposição em loop para todos os produtos da lista e adição da estrutura HTML a ser repetida
 for (let i = 0; i < todosProdutos.length; i++) {

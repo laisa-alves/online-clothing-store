@@ -1,8 +1,16 @@
-@import '/loja-de-roupas/css/geral.css';
+/* Zerando os estilos */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    color: #172e41;
+}
 
-<<<<<<< Updated upstream
-@import '/loja-de-roupas/css/modal.css';
-=======
 :root {
     --main-color: #E74646;
     --text-color: #172e41;
@@ -12,6 +20,7 @@
 img {
     max-width: 100%;
     display: block;
+    border-radius: 4px;
 }
 
 body {
@@ -24,6 +33,10 @@ body {
     width: 100%;
 }
 
+section {
+    padding: 6rem 0 3rem;
+}
+
 /* configurando o header */
 header {
     position: fixed;
@@ -32,6 +45,7 @@ header {
     width: 100%;
     background: var(--bg-color);
     box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+    z-index: 100;
 }
 
 nav {
@@ -117,12 +131,11 @@ ul {
 }
 
 /* disposição dos produtos */
-.lista-produtos {
-    padding: 5rem 6rem;
-    margin-top: 84px;
+.conteudo-produtos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(325px, auto));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    gap: 1.5rem;
+    margin-top: 4rem;
     row-gap: 2.5rem;
 }
 
@@ -132,6 +145,12 @@ ul {
 
 .bloco-produto:hover {
     box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+    border-radius: 4px;
+}
+
+.img-do-produto {
+    width: 100%;
+    height: auto;
 }
 
 /* Estilização do texto do bloco de produto */
@@ -195,11 +214,14 @@ footer p {
     background: #fdfffe;
     box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
     transition: .3s;
+    overflow-y: scroll;
 }
 
 .modal {
     position: relative;
     padding: 20px;
+    margin-top: 100px;
+    margin-right: 10px;
 }
 
 .modal-container.selecionado {
@@ -221,10 +243,9 @@ footer p {
 }
 
 /* configurando os itens adicionados */
-
 .itens-sacola {
     display: grid;
-    grid-template-columns: 32% 50% auto;
+    grid-template-columns: 32% 50% 18%;
     align-items: center;
     gap: 1rem;
 }
@@ -302,4 +323,28 @@ footer p {
 .botao-compra:hover {
     background: #172e41;
 }
->>>>>>> Stashed changes
+
+/* Tornando responsivo */
+@media (max-width: 1200px) {
+    nav {
+        padding: 20px;
+    }
+    .container {
+        margin: 0 auto;
+        width: 90%;
+    }
+    .conteudo-produtos {
+        margin-top: 2rem !important;
+    }
+    .pesquisa-container {
+        height: 30px;
+        gap:10px;
+    }
+    .pesquisa-container input {
+        height: 20px;
+    }
+    .pesquisa-container button {
+        width: 20px;
+    }
+
+}

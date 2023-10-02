@@ -2,7 +2,7 @@
 
 Welcome to Style Central, your online clothing store! This is a **fictional project created to showcase my skills in HTML, CSS, and JavaScript**.
 
-To see the final result, visit the [Style Central website](https://laisa-alves.github.io/todas-tech/).
+To see the final result, visit the [Style Central website](https://laisa-alves.github.io/online-clothing-store/).
 
 ## Overview
 

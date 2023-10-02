@@ -1,105 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Projetos</title>
+    <title>Loja Virtual</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/efb63315b6.js" crossorigin="anonymous"></script>
-    <meta name="description" content="Projetos realizados durante a formação Full Stack da Ímã Tech.">
-
-    <style>
-        * {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-decoration: none;
-            background: #141414;
-            color: #fff;
-        }
-
-        .estrutura {
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr;
-            padding: 40px 30px 20px 30px;
-            justify-content: center;
-            justify-items: center;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .titulo {
-            font-size: 3rem;
-        }
-
-        .projetos-lista {
-            max-width: 580px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .projetos-link {
-            display: block;
-            width: 180px;
-            font-size: 1.5rem;
-            padding: 30px 0;
-            background: #4E88A6;
-            border-radius: 4px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .footer {
-            display: flex;
-            justify-items: center;
-            gap: 20px;
-            font-size: 1.5rem;
-            fill: #fff;
-        }
-
-        @media (max-width: 650px) {
-            body {
-                margin-bottom: 30px;
-            }
-
-            .estrutura {
-                padding: 30px 20px 10px 20px;
-            }
-
-            .titulo {
-                font-size: 2rem;
-                max-width: 300px;
-            }
-
-            .projetos-lista {
-                display: grid;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <header class="header estrutura">
-        <h1 class="titulo">projetos desenvolvidos</h1>
+    <header>
+        <nav class="container nav">
+            <div class="menu-itens">
+                <ul class="menu-itens">
+                    <li id="logo" onclick="filtrarProduto('todos')">Style Central</li>
+                    <li><button class="valor-botao" onclick="filtrarProduto('todos')">Todos</button></li>
+                    <li><button class="valor-botao" onclick="filtrarProduto('feminino')">Feminino</button></li>
+                    <li><button class="valor-botao" onclick="filtrarProduto('infantil')">Infantil</button></li>
+                    <li><button class="valor-botao" onclick="filtrarProduto('masculino')">Masculino</button></li>
+                    <li><button class="valor-botao" id="abrir-modal">Sacola</li>
+                </ul>
+            </div>
+            <div class="pesquisa-container">
+                <input type="search" id="input-pesquisa" placeholder="Buscar produtos">
+                <button id="pesquisar"><i id="search-icon" class="fa-solid fa-magnifying-glass"></i></button>
+                
+            </div>
+        </nav>
     </header>
 
-    <div class="projetos estrutura">
-        <ul class="projetos-lista">
-            <li><a class="projetos-link" href="./loja-de-roupas/index.html" target="_blank">Loja Virtual</a></li>
-        </ul>
-    </div>
+    <section class="lista-produtos container" id="lista-produtos">
+       <div class="conteudo-produtos">
 
-    <footer class="footer estrutura">
-        <a id="github" href="https://github.com/laisa-alves" target="_blank" aria-label="github"><i
-                class="fa-brands fa-square-github"></i></a>
+       </div> 
+    </section>
 
-        <a id="linkedin" href="https://www.linkedin.com/in/laisaalves" target="_blank" aria-label="linkedin"><i
-                class="fa-brands fa-linkedin"></i></a>
+    <footer>
+        <p>Todos os direitos reservados.</p>
     </footer>
 
+    <section class="modal-container" data-modal="container">
+        <div class="modal">
+            <i class="fa-solid fa-xmark fechar" id="fechar-modal"></i>
+            <h2 class="titulo-modal">Sacola de Compras</h2>
+
+            <div class="modal-conteudo">
+
+            </div>
+            <!-- total -->
+            <div class="total">
+                <div class="titulo-total">Total</div>
+                <div class="preco-total">R$ 0</div>
+            </div>
+            <!-- botão de compra -->
+            <button type="botao" class="botao-compra">Comprar agora</button>
+        </div>
+
+    </section>
+
+    <script src="./script/script.js"></script>
 </body>
 
 </html>

@@ -49,7 +49,7 @@ If you have any questions or suggestions, please feel free to get in touch:
 
 Bem-vindo ao Style Central, sua loja de roupas online! Este é um **projeto fictício criado para demonstrar minhas habilidades em HTML, CSS e JavaScript**.
 
-Para visualizar o resultado final acesse o site [Style Central](https://laisa-alves.github.io/todas-tech/)
+Para visualizar o resultado final acesse o site [Style Central](https://laisa-alves.github.io/online-clothing-store/)
 
 ## Visão Geral
 
